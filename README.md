@@ -2,6 +2,18 @@
 This is a compiled version of SMS Server Tools 3 for the Omega2 (MediaTek MT7688). 
 
 
+## Installing the binaries
+This is the commands to create the folders and copy the files to the right place.
+```
+mkdir -p /sms/{outgoing,checked,incoming}
+mkdir /usr/local/bin/
+cp init.d/sms3 /etc/init.d/sms3
+cp config/smsd.conf /etc/smsd.conf
+cp bin/smsd /usr/local/bin/smsd
+cp scripts/* /usr/local/bin/
+```
+
+
 ## Guide to compiling
 This is the guide that i follow to compile the software when there is a update. You need a SD-card connected to your Omega2 to be able to compile the software as gcc taked some space.
 
