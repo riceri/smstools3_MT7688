@@ -18,13 +18,13 @@ cp scripts/* /usr/local/bin/
 This is the guide that i follow to compile the software when there is a update. You need a SD-card connected to your Omega2 to be able to compile the software as gcc taked some space.
 
 1. Follow the guide to mount your SD-card as a overlay: https://docs.onion.io/omega2-docs/boot-from-external-storage.html
-1. As gcc is not part of the normal repos you need to add a new repo to your `/etc/opkg/distfeeds.conf`. Add the following line last in that file `src/gz omega2_test http://repo.onion.io/omega2/test/packages`.
+1. As gcc is not part of the normal repos you need to add a new repo to your `/etc/opkg/distfeeds.conf`. Uncomment like 2 and 5 and add the following line last in that file `src/gz omega2_test http://repo.onion.io/omega2/test/packages`.
     ```
     #src/gz reboot_core http://downloads.lede-project.org/releases/17.01-SNAPSHOT/targets/ramips/mt7688/packages
-    #src/gz reboot_base http://downloads.lede-project.org/releases/17.01-SNAPSHOT/packages/mipsel_24kc/base
+    src/gz reboot_base http://downloads.lede-project.org/releases/17.01-SNAPSHOT/packages/mipsel_24kc/base
     #src/gz reboot_onion http://downloads.lede-project.org/releases/17.01-SNAPSHOT/packages/mipsel_24kc/onion
     ## src/gz reboot_luci http://downloads.lede-project.org/releases/17.01-SNAPSHOT/packages/mipsel_24kc/luci
-    ## src/gz reboot_packages http://downloads.lede-project.org/releases/17.01-SNAPSHOT/packages/mipsel_24kc/packages
+    src/gz reboot_packages http://downloads.lede-project.org/releases/17.01-SNAPSHOT/packages/mipsel_24kc/packages
     ## src/gz reboot_routing http://downloads.lede-project.org/releases/17.01-SNAPSHOT/packages/mipsel_24kc/routing
     ## src/gz reboot_telephony http://downloads.lede-project.org/releases/17.01-SNAPSHOT/packages/mipsel_24kc/telephony
     src/gz omega2_core http://repo.onion.io/omega2/packages/core
@@ -36,6 +36,7 @@ This is the guide that i follow to compile the software when there is a update. 
 1. Now you have installed a repo where they store gcc as it is named test i guess it isn't stable but it worked ok for me. So lets move on to install gcc and make
     ```
     opkg update
+    opkg install binutils
     opkg install gcc
     opkg install make
     ```
